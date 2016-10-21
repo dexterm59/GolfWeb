@@ -197,11 +197,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GolfCoursesController.cs" />
+    <Compile Include="Controllers\GolfHolesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GolfCourse.cs" />
     <Compile Include="Models\Golfer.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -273,6 +275,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\GolfHoles\Create.cshtml" />
+    <Content Include="Views\GolfHoles\Delete.cshtml" />
+    <Content Include="Views\GolfHoles\Details.cshtml" />
+    <Content Include="Views\GolfHoles\Edit.cshtml" />
+    <Content Include="Views\GolfHoles\Index.cshtml" />
     <Content Include="Views\GolfCourses\Create.cshtml" />
     <Content Include="Views\GolfCourses\Delete.cshtml" />
     <Content Include="Views\GolfCourses\Details.cshtml" />

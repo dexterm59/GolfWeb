@@ -17,5 +17,6 @@ namespace GolfWeb.Models
         public int Par { get; set; }
         public int Handicap { get; set; }
         public virtual GolfCourse GolfCourse { get; set; }
+        
     }
 }

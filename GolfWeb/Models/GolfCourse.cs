@@ -10,18 +10,10 @@ namespace GolfWeb.Models
         public int GolfCourseID {get; set;}
         public string Name { get; set; }
         public virtual ICollection<GolfHole> Holes { get; set; }
-        public float CourseSlope { get; set; }
-        public int CourseRating { get; set; }
-        public GolfCourse()
-        {
-            this.Holes = new HashSet<GolfHole>();
-            for(var i = 0; i < 18; i++)
-            {
-                GolfHole h = new GolfHole();
-                this.Holes.Add(h);
-            }
-        }
+        public int CourseSlope { get; set; }
+        public float CourseRating { get; set; }
     }
+   
     public class GolfDBContext : DbContext
     {
         public DbSet<GolfCourse> Courses { get; set; }
