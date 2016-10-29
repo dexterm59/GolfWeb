@@ -18,6 +18,7 @@ namespace GolfWeb.Controllers
         public ActionResult Index()
         {
             var golfRounds = db.GolfRounds.Include(g => g.GolfCourse).Include(g => g.Golfer);
+            
             return View(golfRounds.ToList());
         }
 
@@ -33,6 +34,10 @@ namespace GolfWeb.Controllers
             {
                 return HttpNotFound();
             }
+            var hscores = from h in db.HoleScores
+                                  where h.RoundID == id
+                                  select h;
+            golfRound.Scores = hscores.ToList<HoleScore>();
             return View(golfRound);
         }
 
