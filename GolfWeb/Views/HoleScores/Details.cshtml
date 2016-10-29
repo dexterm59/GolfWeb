@@ -1,0 +1,114 @@
+﻿@model GolfWeb.Models.HoleScore
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HoleScore</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GolfHole.GolfHoleID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GolfHole.GolfHoleID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Score)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FairwayAccuracy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FairwayAccuracy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApproachAccuracy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApproachAccuracy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Putts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Putts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstPuttLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstPuttLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MadePuttLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MadePuttLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Chip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pitch)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pitch)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Penalty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Penalty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoundID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoundID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HoleScoreID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

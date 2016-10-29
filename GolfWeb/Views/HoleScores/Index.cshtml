@@ -1,0 +1,99 @@
+﻿@model IEnumerable<GolfWeb.Models.HoleScore>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GolfHole.GolfHoleID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FairwayAccuracy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApproachAccuracy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Putts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstPuttLength)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MadePuttLength)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Chip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pitch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Penalty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoundID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GolfHole.GolfHoleID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Score)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FairwayAccuracy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApproachAccuracy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Putts)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstPuttLength)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MadePuttLength)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pitch)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Penalty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoundID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HoleScoreID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HoleScoreID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HoleScoreID })
+        </td>
+    </tr>
+}
+
+</table>

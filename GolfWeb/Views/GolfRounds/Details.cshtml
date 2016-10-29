@@ -1,0 +1,50 @@
+﻿@model GolfWeb.Models.GolfRound
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GolfRound</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GolfCourse.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GolfCourse.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Golfer.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Golfer.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Index)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Index)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoundTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoundTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GolfRoundID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

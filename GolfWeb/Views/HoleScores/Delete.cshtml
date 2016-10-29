@@ -1,0 +1,120 @@
+﻿@model GolfWeb.Models.HoleScore
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>HoleScore</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GolfHole.GolfHoleID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GolfHole.GolfHoleID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Score)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FairwayAccuracy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FairwayAccuracy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApproachAccuracy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApproachAccuracy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Putts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Putts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstPuttLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstPuttLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MadePuttLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MadePuttLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Chip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pitch)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pitch)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Penalty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Penalty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoundID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoundID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
