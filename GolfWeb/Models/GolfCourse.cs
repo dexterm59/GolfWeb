@@ -21,5 +21,6 @@ namespace GolfWeb.Models
         public DbSet<Golfer> Golfers { get; set; }
         public DbSet<GolfRound> GolfRounds { get; set; }
         public DbSet<HoleScore> HoleScores { get; set; }
+        
     }
 }

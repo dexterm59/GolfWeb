@@ -18,7 +18,6 @@ namespace GolfWeb.Controllers
         public ActionResult Index()
         {
             var golfRounds = db.GolfRounds.Include(g => g.GolfCourse).Include(g => g.Golfer);
-            
             return View(golfRounds.ToList());
         }
 
@@ -34,10 +33,6 @@ namespace GolfWeb.Controllers
             {
                 return HttpNotFound();
             }
-            var hscores = from h in db.HoleScores
-                                  where h.RoundID == id
-                                  select h;
-            golfRound.Scores = hscores.ToList<HoleScore>();
             return View(golfRound);
         }
 
@@ -54,7 +49,7 @@ namespace GolfWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GolfRoundID,GolferID,Index,RoundTime,GolfCourseID")] GolfRound golfRound)
+        public ActionResult Create([Bind(Include = "GolferID,RoundTime,Index,GolfCourseID")] GolfRound golfRound)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +85,7 @@ namespace GolfWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GolfRoundID,GolferID,Index,RoundTime,GolfCourseID")] GolfRound golfRound)
+        public ActionResult Edit([Bind(Include = "GolferID,RoundTime,Index,GolfCourseID")] GolfRound golfRound)
         {
             if (ModelState.IsValid)
             {

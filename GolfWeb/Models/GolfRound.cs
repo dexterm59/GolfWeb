@@ -9,12 +9,15 @@ namespace GolfWeb.Models
 {
     public class GolfRound
     {
-        public int GolfRoundID { get; set; }
+       [Key]
+       [Column(Order = 1)]
         public int GolferID { get; set; }
-
+        [Key]
+        [Column(Order=2)]
+        public DateTime RoundTime { get; set; }
         public virtual Golfer Golfer { get; set; }
         public float Index { get; set; }
-        public DateTime RoundTime { get; set; }
+        
         
         public int GolfCourseID { get; set; }
         public virtual GolfCourse GolfCourse { get; set; }

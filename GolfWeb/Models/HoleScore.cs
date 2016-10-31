@@ -27,9 +27,14 @@ namespace GolfWeb.Models
         public bool Pitch { get; set; }
         public bool Sand { get; set; }
         public int Penalty { get; set; }
-        
-        public int RoundID { get; set; }
         public virtual GolfRound GolfRound { get; set; }
+        [ForeignKey("GolfRound")]
+        [Column(Order = 1)]
+        public int? GolferID { get; set; }
+        [ForeignKey("GolfRound")]
+        [Column(Order = 2)]
+        public DateTime? RoundTime { get; set; }
+       
   
         public int GolfHoleID { get; set; }
         public virtual GolfHole GolfHole { get; set; }

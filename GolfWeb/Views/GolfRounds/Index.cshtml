@@ -20,9 +20,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Index)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RoundTime)
-        </th>
         <th></th>
     </tr>
 
@@ -38,12 +35,9 @@
             @Html.DisplayFor(modelItem => item.Index)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RoundTime)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GolfRoundID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.GolfRoundID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GolfRoundID })
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }

@@ -104,10 +104,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.RoundID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.GolferID, "GolferID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RoundID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RoundID, "", new { @class = "text-danger" })
+                @Html.DropDownList("GolferID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GolferID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoundTime, "RoundTime", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("RoundTime", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RoundTime, "", new { @class = "text-danger" })
             </div>
         </div>
 

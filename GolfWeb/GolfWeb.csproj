@@ -206,11 +206,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610222104373_InitialCreate.cs" />
-    <Compile Include="Migrations\201610222104373_InitialCreate.Designer.cs">
-      <DependentUpon>201610222104373_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GolfCourse.cs" />
     <Compile Include="Models\Golfer.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -295,16 +290,16 @@
     <Content Include="Views\Golfers\Details.cshtml" />
     <Content Include="Views\Golfers\Edit.cshtml" />
     <Content Include="Views\Golfers\Index.cshtml" />
-    <Content Include="Views\GolfHoles\Create.cshtml" />
-    <Content Include="Views\GolfHoles\Delete.cshtml" />
-    <Content Include="Views\GolfHoles\Details.cshtml" />
-    <Content Include="Views\GolfHoles\Edit.cshtml" />
-    <Content Include="Views\GolfHoles\Index.cshtml" />
     <Content Include="Views\GolfRounds\Create.cshtml" />
     <Content Include="Views\GolfRounds\Delete.cshtml" />
     <Content Include="Views\GolfRounds\Details.cshtml" />
     <Content Include="Views\GolfRounds\Edit.cshtml" />
     <Content Include="Views\GolfRounds\Index.cshtml" />
+    <Content Include="Views\GolfHoles\Create.cshtml" />
+    <Content Include="Views\GolfHoles\Delete.cshtml" />
+    <Content Include="Views\GolfHoles\Details.cshtml" />
+    <Content Include="Views\GolfHoles\Edit.cshtml" />
+    <Content Include="Views\GolfHoles\Index.cshtml" />
     <Content Include="Views\HoleScores\Create.cshtml" />
     <Content Include="Views\HoleScores\Delete.cshtml" />
     <Content Include="Views\HoleScores\Details.cshtml" />
@@ -321,11 +316,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610222104373_InitialCreate.resx">
-      <DependentUpon>201610222104373_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
