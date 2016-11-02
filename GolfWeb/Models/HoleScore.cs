@@ -34,9 +34,14 @@ namespace GolfWeb.Models
         [ForeignKey("GolfRound")]
         [Column(Order = 2)]
         public DateTime? RoundTime { get; set; }
-       
-  
-        public int GolfHoleID { get; set; }
+
+
+        [ForeignKey("GolfHole")]
+        [Column(Order = 3)]
+        public int? GolfCourseID { get; set; }
+        [ForeignKey("GolfHole")]
+        [Column(Order = 4)]
+        public int? HoleNum { get; set; }
         public virtual GolfHole GolfHole { get; set; }
     }
     

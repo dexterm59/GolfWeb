@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.Handicap)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GolfHoleID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.GolfHoleID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GolfHoleID })
+            @Html.ActionLink("Edit", "Edit", new { CourseID = item.GolfCourseID, HoleNum = item.HoleNum }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }

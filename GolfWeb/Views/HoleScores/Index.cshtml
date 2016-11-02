@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.GolfHole.GolfHoleID)
+            @Html.DisplayNameFor(model => model.GolfHole.GolfCourseID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.GolfRound.GolferID)
@@ -53,7 +53,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.GolfHole.GolfHoleID)
+            @Html.DisplayFor(modelItem => item.GolfHole.GolfCourseID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.GolfRound.GolferID)

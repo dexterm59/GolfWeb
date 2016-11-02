@@ -10,114 +10,121 @@ using GolfWeb.Models;
 
 namespace GolfWeb.Controllers
 {
-    public class GolfHolesController : Controller
+    public class GolfRoundsController : Controller
     {
         private GolfDBContext db = new GolfDBContext();
 
-        // GET: GolfHoles
+        // GET: GolfRounds
         public ActionResult Index()
         {
-            var golfHoles = db.GolfHoles.Include(g => g.GolfCourse);
-            return View(golfHoles.ToList());
+            var golfRounds = db.GolfRounds.Include(g => g.GolfCourse).Include(g => g.Golfer);
+            
+            return View(golfRounds.ToList());
         }
 
-        // GET: GolfHoles/Details/5
+        // GET: GolfRounds/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GolfHole golfHole = db.GolfHoles.Find(id);
-            if (golfHole == null)
+            GolfRound golfRound = db.GolfRounds.Find(id);
+            if (golfRound == null)
             {
                 return HttpNotFound();
             }
-            return View(golfHole);
+            var hscores = from h in db.HoleScores
+                                  where h.RoundID == id
+                                  select h;
+            golfRound.Scores = hscores.ToList<HoleScore>();
+            return View(golfRound);
         }
 
-        // GET: GolfHoles/Create
+        // GET: GolfRounds/Create
         public ActionResult Create()
         {
             ViewBag.GolfCourseID = new SelectList(db.Courses, "GolfCourseID", "Name");
+            ViewBag.GolferID = new SelectList(db.Golfers, "GolferID", "LastName");
             return View();
         }
 
-        // POST: GolfHoles/Create
+        // POST: GolfRounds/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GolfCourseID,HoleNum,Par,Handicap")] GolfHole golfHole)
+        public ActionResult Create([Bind(Include = "GolfRoundID,GolferID,Index,RoundTime,GolfCourseID")] GolfRound golfRound)
         {
             if (ModelState.IsValid)
             {
-                db.GolfHoles.Add(golfHole);
+                db.GolfRounds.Add(golfRound);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.GolfCourseID = new SelectList(db.Courses, "GolfCourseID", "Name", golfHole.GolfCourseID);
-            
-            return View(golfHole);
+            ViewBag.GolfCourseID = new SelectList(db.Courses, "GolfCourseID", "Name", golfRound.GolfCourseID);
+            ViewBag.GolferID = new SelectList(db.Golfers, "GolferID", "LastName", golfRound.GolferID);
+            return View(golfRound);
         }
 
-        // GET: GolfHoles/Edit/5
-        public ActionResult Edit(int? CourseID, int? HoleNum )
+        // GET: GolfRounds/Edit/5
+        public ActionResult Edit(int? id)
         {
-            if (CourseID == null || HoleNum == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GolfHole golfHole = db.GolfHoles.Find(CourseID, HoleNum);
-            if (golfHole == null)
+            GolfRound golfRound = db.GolfRounds.Find(id);
+            if (golfRound == null)
             {
                 return HttpNotFound();
             }
-
-            
-            return View(golfHole);
+            ViewBag.GolfCourseID = new SelectList(db.Courses, "GolfCourseID", "Name", golfRound.GolfCourseID);
+            ViewBag.GolferID = new SelectList(db.Golfers, "GolferID", "LastName", golfRound.GolferID);
+            return View(golfRound);
         }
 
-        // POST: GolfHoles/Edit/5
+        // POST: GolfRounds/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GolfCourseID,HoleNum,Par,Handicap")] GolfHole golfHole)
+        public ActionResult Edit([Bind(Include = "GolfRoundID,GolferID,Index,RoundTime,GolfCourseID")] GolfRound golfRound)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(golfHole).State = EntityState.Modified;
+                db.Entry(golfRound).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.GolfCourseID = new SelectList(db.Courses, "GolfCourseID", "Name", golfHole.GolfCourseID);
-            return View(golfHole);
+            ViewBag.GolfCourseID = new SelectList(db.Courses, "GolfCourseID", "Name", golfRound.GolfCourseID);
+            ViewBag.GolferID = new SelectList(db.Golfers, "GolferID", "LastName", golfRound.GolferID);
+            return View(golfRound);
         }
 
-        // GET: GolfHoles/Delete/5
+        // GET: GolfRounds/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GolfHole golfHole = db.GolfHoles.Find(id);
-            if (golfHole == null)
+            GolfRound golfRound = db.GolfRounds.Find(id);
+            if (golfRound == null)
             {
                 return HttpNotFound();
             }
-            return View(golfHole);
+            return View(golfRound);
         }
 
-        // POST: GolfHoles/Delete/5
+        // POST: GolfRounds/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            GolfHole golfHole = db.GolfHoles.Find(id);
-            db.GolfHoles.Remove(golfHole);
+            GolfRound golfRound = db.GolfRounds.Find(id);
+            db.GolfRounds.Remove(golfRound);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

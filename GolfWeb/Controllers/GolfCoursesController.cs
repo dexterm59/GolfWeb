@@ -32,6 +32,10 @@ namespace GolfWeb.Controllers
             {
                 return HttpNotFound();
             }
+            var holes = from h in db.GolfHoles
+                        where h.GolfCourseID == id
+                        select h;
+            golfCourse.Holes = holes.ToList<GolfHole>();
             return View(golfCourse);
         }
 
@@ -50,7 +54,17 @@ namespace GolfWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                //need to put a try catch here to maker sure the db action succeeds - primary keys may be invalid
                 db.Courses.Add(golfCourse);
+                db.SaveChanges();
+                for(var i = 0; i < 18; i++)
+                {
+                    var h = new GolfHole();
+                    h.HoleNum = i + 1;
+                    h.Par = 4;
+                    h.GolfCourseID = golfCourse.GolfCourseID;
+                    db.GolfHoles.Add(h);
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -70,6 +84,7 @@ namespace GolfWeb.Controllers
             {
                 return HttpNotFound();
             }
+            
             return View(golfCourse);
         }
 
@@ -78,11 +93,26 @@ namespace GolfWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GolfCourseID,Name,CourseSlope,CourseRating")] GolfCourse golfCourse)
+        public ActionResult Edit([Bind(Include = "GolfCourseID,Name,CourseSlope,CourseRating,Holes")] GolfCourse golfCourse)
         {
             if (ModelState.IsValid)
             {
+                var pars = Request["Item.Par"].Split(',').ToList<string>();
+                var handicaps = Request["Item.Handicap"].Split(',').ToList<string>();
+                var holes = new List<GolfHole>();
+                for(int i = 0; i < pars.Count; i++)
+                {
+                    var h = new GolfHole();
+                    h.HoleNum = i + 1;
+                    h.Par = int.Parse(pars[i]);
+                    h.Handicap = int.Parse(handicaps[i]);
+                    h.GolfCourseID = golfCourse.GolfCourseID;
+                    db.Entry(h).State = EntityState.Modified;
+                    //holes.Add(h);
+                }
+                //golfCourse.Holes = holes;
                 db.Entry(golfCourse).State = EntityState.Modified;
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

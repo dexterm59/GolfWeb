@@ -39,9 +39,8 @@ namespace GolfWeb.Controllers
         // GET: HoleScores/Create
         public ActionResult Create()
         {
-            ViewBag.GolfHoleID = new SelectList(db.GolfHoles, "GolfHoleID", "GolfHoleID");
+            ViewBag.GolfCourseID = new SelectList(db.GolfHoles, "GolfCourseID", "GolfCourseID");
             ViewBag.GolferID = new SelectList(db.GolfRounds, "GolferID", "GolferID");
-            ViewBag.RoundTime = new SelectList(db.GolfRounds, "RoundTime", "RoundTime");
             return View();
         }
 
@@ -50,7 +49,7 @@ namespace GolfWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "HoleScoreID,Score,FairwayAccuracy,ApproachAccuracy,Putts,FirstPuttLength,MadePuttLength,Chip,Pitch,Sand,Penalty,GolferID,RoundTime,GolfHoleID")] HoleScore holeScore)
+        public ActionResult Create([Bind(Include = "HoleScoreID,Score,FairwayAccuracy,ApproachAccuracy,Putts,FirstPuttLength,MadePuttLength,Chip,Pitch,Sand,Penalty,GolferID,RoundTime,GolfCourseID,HoleNum")] HoleScore holeScore)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +58,7 @@ namespace GolfWeb.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.GolfHoleID = new SelectList(db.GolfHoles, "GolfHoleID", "GolfHoleID", holeScore.GolfHoleID);
+            ViewBag.GolfCourseID = new SelectList(db.GolfHoles, "GolfCourseID", "GolfCourseID", holeScore.GolfCourseID);
             ViewBag.GolferID = new SelectList(db.GolfRounds, "GolferID", "GolferID", holeScore.GolferID);
             return View(holeScore);
         }
@@ -76,7 +75,7 @@ namespace GolfWeb.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.GolfHoleID = new SelectList(db.GolfHoles, "GolfHoleID", "GolfHoleID", holeScore.GolfHoleID);
+            ViewBag.GolfCourseID = new SelectList(db.GolfHoles, "GolfCourseID", "GolfCourseID", holeScore.GolfCourseID);
             ViewBag.GolferID = new SelectList(db.GolfRounds, "GolferID", "GolferID", holeScore.GolferID);
             return View(holeScore);
         }
@@ -86,7 +85,7 @@ namespace GolfWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HoleScoreID,Score,FairwayAccuracy,ApproachAccuracy,Putts,FirstPuttLength,MadePuttLength,Chip,Pitch,Sand,Penalty,GolferID,RoundTime,GolfHoleID")] HoleScore holeScore)
+        public ActionResult Edit([Bind(Include = "HoleScoreID,Score,FairwayAccuracy,ApproachAccuracy,Putts,FirstPuttLength,MadePuttLength,Chip,Pitch,Sand,Penalty,GolferID,RoundTime,GolfCourseID,HoleNum")] HoleScore holeScore)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +93,7 @@ namespace GolfWeb.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.GolfHoleID = new SelectList(db.GolfHoles, "GolfHoleID", "GolfHoleID", holeScore.GolfHoleID);
+            ViewBag.GolfCourseID = new SelectList(db.GolfHoles, "GolfCourseID", "GolfCourseID", holeScore.GolfCourseID);
             ViewBag.GolferID = new SelectList(db.GolfRounds, "GolferID", "GolferID", holeScore.GolferID);
             return View(holeScore);
         }
