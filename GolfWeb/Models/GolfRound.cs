@@ -21,7 +21,7 @@ namespace GolfWeb.Models
         
         public int GolfCourseID { get; set; }
         public virtual GolfCourse GolfCourse { get; set; }
-        public virtual ICollection<HoleScore> Scores { get; set; }
+        public virtual ICollection<GolfHole> Scores { get; set; }
 
     }
 }

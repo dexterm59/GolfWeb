@@ -99,7 +99,7 @@ namespace GolfWeb.Controllers
             {
                 var pars = Request["Item.Par"].Split(',').ToList<string>();
                 var handicaps = Request["Item.Handicap"].Split(',').ToList<string>();
-                var holes = new List<GolfHole>();
+                
                 for(int i = 0; i < pars.Count; i++)
                 {
                     var h = new GolfHole();
@@ -108,9 +108,9 @@ namespace GolfWeb.Controllers
                     h.Handicap = int.Parse(handicaps[i]);
                     h.GolfCourseID = golfCourse.GolfCourseID;
                     db.Entry(h).State = EntityState.Modified;
-                    //holes.Add(h);
+                   
                 }
-                //golfCourse.Holes = holes;
+                
                 db.Entry(golfCourse).State = EntityState.Modified;
                 
                 db.SaveChanges();
