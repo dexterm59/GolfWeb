@@ -60,6 +60,7 @@ namespace GolfWeb.Controllers
                 foreach (var hole in holes)
                 {
                     var hs = new HoleScore();
+                    hs.GolfCourseID = hole.GolfCourseID;
                     hs.GolferID = golfRound.GolferID;
                     hs.RoundTime = golfRound.RoundTime;
                     hs.HoleNum = hole.HoleNum;

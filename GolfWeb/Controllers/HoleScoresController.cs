@@ -75,8 +75,18 @@ namespace GolfWeb.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.GolfCourseID = new SelectList(db.GolfHoles, "GolfCourseID", "GolfCourseID", holeScore.GolfCourseID);
-            ViewBag.GolferID = new SelectList(db.GolfRounds, "GolferID", "GolferID", holeScore.GolferID);
+            GolfCourse golfCourse = db.Courses.Find(holeScore.GolfCourseID);
+            if(golfCourse == null)
+            {
+                return HttpNotFound();
+            }
+            Golfer golfer = db.Golfers.Find(holeScore.GolferID);
+            if (golfer == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.GolfCourseName = golfCourse.Name;
+            ViewBag.GolferName = golfer.FirstName + " " + golfer.LastName;
             return View(holeScore);
         }
 
