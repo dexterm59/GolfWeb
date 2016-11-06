@@ -32,10 +32,10 @@ namespace GolfWeb.Controllers
             {
                 return HttpNotFound();
             }
-            var holes = from h in db.GolfHoles
+/*            var holes = from h in db.GolfHoles
                         where h.GolfCourseID == id
                         select h;
-            golfCourse.Holes = holes.ToList<GolfHole>();
+            golfCourse.Holes = holes.ToList<GolfHole>();*/
             return View(golfCourse);
         }
 
@@ -97,20 +97,12 @@ namespace GolfWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var pars = Request["Item.Par"].Split(',').ToList<string>();
-                var handicaps = Request["Item.Handicap"].Split(',').ToList<string>();
-                
-                for(int i = 0; i < pars.Count; i++)
+
+              foreach(var hole in golfCourse.Holes)
                 {
-                    var h = new GolfHole();
-                    h.HoleNum = i + 1;
-                    h.Par = int.Parse(pars[i]);
-                    h.Handicap = int.Parse(handicaps[i]);
-                    h.GolfCourseID = golfCourse.GolfCourseID;
-                    db.Entry(h).State = EntityState.Modified;
-                   
+                    db.Entry(hole).State = EntityState.Modified;        
                 }
-                
+            
                 db.Entry(golfCourse).State = EntityState.Modified;
                 
                 db.SaveChanges();

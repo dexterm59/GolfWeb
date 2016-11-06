@@ -17,6 +17,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.GolfCourseID)
+       
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -44,7 +45,7 @@
         </div>
         
         
-          <div class="row">
+          <div class="form-horizontal">
               <div class="col-xs-4">
                   @Html.DisplayNameFor(model => model.Holes.FirstOrDefault().HoleNum)
               </div>
@@ -55,19 +56,23 @@
                   @Html.DisplayNameFor(model => model.Holes.FirstOrDefault().Handicap)
               </div>
           </div>
+                
+                for(int i = 0; i < Model.Holes.Count(); i++)
+                {
+                   
 
-            foreach (var item in Model.Holes)
-            {
-                <div class="row">
+                            <div class="form-horizontal">
                     <div class="col-xs-4">
-                        @Html.DisplayFor(model => item.HoleNum)
+                        @Html.DisplayFor(model => model.Holes[i].HoleNum)
+                        @Html.HiddenFor(model => model.Holes[i].GolfCourseID)
+                        @Html.HiddenFor(model => model.Holes[i].HoleNum)
                     </div>
                     <div class="col-xs-4">
                         <div class="form-inline">
                             <div class="form-group">
                                 <div class="col-xs-6">
-                                    @Html.EditorFor(model => item.Par, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => item.Par, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.Holes[i].Par, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Holes[i].Par, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -76,16 +81,17 @@
                         <div class="form-inline">
                             <div class="form-group">
                                 <div class="col-xs-6">
-                                    @Html.EditorFor(model => item.Handicap, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => item.Handicap, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.Holes[i].Handicap, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Holes[i].Handicap, "", new { @class = "text-danger" })
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-           
-            }
-   
+
+    }
+
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Save" class="btn btn-default" />
