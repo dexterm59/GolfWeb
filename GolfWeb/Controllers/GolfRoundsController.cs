@@ -56,25 +56,12 @@ namespace GolfWeb.Controllers
                 db.GolfRounds.Add(golfRound);
                 db.SaveChanges();
                 golfRound.GolfCourse = db.Courses.Find(golfRound.GolfCourseID);
-                var holes = golfRound.GolfCourse.Holes.ToList<GolfHole>();
-                foreach (var hole in holes)
+                golfRound.Golfer = db.Golfers.Find(golfRound.GolferID);
+                golfRound.AddDefaultScores();
+                
+                foreach (var hs in golfRound.Scores)
                 {
-                    var hs = new HoleScore();
-                    hs.GolfCourseID = hole.GolfCourseID;
-                    hs.GolferID = golfRound.GolferID;
-                    hs.RoundTime = golfRound.RoundTime;
-                    hs.HoleNum = hole.HoleNum;
-                    hs.Score = hole.Par;
-                    hs.FairwayAccuracy = HoleScore.Fairway.In;
-                    hs.ApproachAccuracy = HoleScore.Approach.On;
-                    hs.Chip = false;
-                    hs.Pitch = false;
-                    hs.Penalty = 0;
-                    hs.Putts = 2;
-                    hs.Sand = false;
-
                     db.HoleScores.Add(hs);
-
                 }
                 db.SaveChanges();
                 return RedirectToAction("Index");
